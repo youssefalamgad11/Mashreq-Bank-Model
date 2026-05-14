@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mashreq AI — Loan Repayment Assessment</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <a href="index.html" class="logo-link">
+        <img src="logo.jpg" alt="Mashreq Bank" class="logo-img" />
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="loan-assessment.html" class="active">LOAN ASSESSMENT</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html" class="btn-ghost small">← BACK</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="section-label">AI MODEL — CREDIT RISK ENGINE</div>
+    <h1>LOAN REPAYMENT<br /><span class="accent">ASSESSMENT</span></h1>
+    <p>Enter the applicant's financial profile below. The model will predict repayment probability, classify risk segment, and provide a lending recommendation with reasoning.</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="assessment-section">
+    <div class="assessment-wrap">
+
+      <!-- FORM -->
+      <div class="assess-form" id="assessForm">
+        <div class="form-header">
+          <h3>APPLICANT PROFILE</h3>
+          <div class="form-progress">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <span class="progress-text" id="progressText">0 / 11 completed</span>
+          </div>
+        </div>
+
+        <!-- SECTION 1: PERSONAL -->
+        <div class="form-section">
+          <div class="form-section-title">📋 PERSONAL INFORMATION</div>
+
+          <div class="form-group">
+            <label>Marital Status</label>
+            <div class="btn-group" id="maritalGroup">
+              <button class="option-btn" data-value="single">Single</button>
+              <button class="option-btn" data-value="married">Married</button>
+              <button class="option-btn" data-value="divorced">Divorced</button>
+              <button class="option-btn" data-value="widowed">Widowed</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Number of Dependents</label>
+            <div class="btn-group" id="dependentsGroup">
+              <button class="option-btn" data-value="0">None</button>
+              <button class="option-btn" data-value="1-2">1 – 2</button>
+              <button class="option-btn" data-value="3-4">3 – 4</button>
+              <button class="option-btn" data-value="5+">5 or more</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Education Level</label>
+            <div class="btn-group" id="educationGroup">
+              <button class="option-btn" data-value="high_school">High School</button>
+              <button class="option-btn" data-value="diploma">Diploma</button>
+              <button class="option-btn" data-value="bachelor">Bachelor's</button>
+              <button class="option-btn" data-value="postgraduate">Postgraduate</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: FINANCIAL -->
+        <div class="form-section">
+          <div class="form-section-title">💰 FINANCIAL PROFILE (بالجنيه المصري)</div>
+
+          <div class="form-group">
+            <label>Monthly Salary — الراتب الشهري (EGP جنيه)</label>
+            <div class="btn-group" id="salaryGroup">
+              <button class="option-btn" data-value="under_3k">أقل من 3,000 جنيه</button>
+              <button class="option-btn" data-value="3k_7k">3,000 – 7,000 جنيه</button>
+              <button class="option-btn" data-value="7k_15k">7,000 – 15,000 جنيه</button>
+              <button class="option-btn" data-value="15k_40k">15,000 – 40,000 جنيه</button>
+              <button class="option-btn" data-value="above_40k">أكثر من 40,000 جنيه</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Employment Type — نوع الوظيفة</label>
+            <div class="btn-group" id="employmentGroup">
+              <button class="option-btn" data-value="government">حكومي / قطاع عام</button>
+              <button class="option-btn" data-value="private_large">قطاع خاص — شركة كبرى</button>
+              <button class="option-btn" data-value="private_sme">قطاع خاص — شركة صغيرة</button>
+              <button class="option-btn" data-value="self_employed">عمل حر / تجارة</button>
+              <button class="option-btn" data-value="freelance">فريلانس</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Years at Current Employer — سنوات الخبرة</label>
+            <div class="btn-group" id="tenureGroup">
+              <button class="option-btn" data-value="under_1">أقل من سنة</button>
+              <button class="option-btn" data-value="1_3">1 – 3 سنوات</button>
+              <button class="option-btn" data-value="3_7">3 – 7 سنوات</button>
+              <button class="option-btn" data-value="above_7">أكثر من 7 سنوات</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: ASSETS & LIABILITIES -->
+        <div class="form-section">
+          <div class="form-section-title">🏠 ASSETS & LIABILITIES — الأصول والالتزامات</div>
+
+          <div class="form-group">
+            <label>Owns a Property? — هل يمتلك عقار؟</label>
+            <div class="btn-group" id="propertyGroup">
+              <button class="option-btn" data-value="yes_owned">نعم — مملوك بالكامل</button>
+              <button class="option-btn" data-value="yes_mortgage">نعم — تحت التمويل</button>
+              <button class="option-btn" data-value="no_renting">لا — مستأجر</button>
+              <button class="option-btn" data-value="no_family">لا — مع الأسرة</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Owns a Vehicle? — هل يمتلك سيارة؟</label>
+            <div class="btn-group" id="vehicleGroup">
+              <button class="option-btn" data-value="yes_owned">نعم — مملوكة</button>
+              <button class="option-btn" data-value="yes_financed">نعم — بالتقسيط</button>
+              <button class="option-btn" data-value="no">لا سيارة</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Existing Monthly Loan Obligations — أقساط شهرية حالية (EGP جنيه)</label>
+            <div class="btn-group" id="obligationsGroup">
+              <button class="option-btn" data-value="none">لا يوجد</button>
+              <button class="option-btn" data-value="under_1500">أقل من 1,500 جنيه</button>
+              <button class="option-btn" data-value="1500_4k">1,500 – 4,000 جنيه</button>
+              <button class="option-btn" data-value="4k_8k">4,000 – 8,000 جنيه</button>
+              <button class="option-btn" data-value="above_8k">أكثر من 8,000 جنيه</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: CREDIT -->
+        <div class="form-section">
+          <div class="form-section-title">📊 CREDIT HISTORY — السجل الائتماني</div>
+
+          <div class="form-group">
+            <label>Previous Loan Defaults? — هل تعثر في سداد قروض سابقة؟</label>
+            <div class="btn-group" id="defaultGroup">
+              <button class="option-btn" data-value="none">لا يوجد تعثر</button>
+              <button class="option-btn" data-value="late_minor">تأخر بسيط أحياناً</button>
+              <button class="option-btn" data-value="late_major">تأخر متكرر</button>
+              <button class="option-btn" data-value="defaulted">تعثر مسجل</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Requested Loan Amount — مبلغ القرض المطلوب (EGP جنيه)</label>
+            <div class="btn-group" id="loanAmountGroup">
+              <button class="option-btn" data-value="under_20k">أقل من 20,000 جنيه</button>
+              <button class="option-btn" data-value="20k_60k">20,000 – 60,000 جنيه</button>
+              <button class="option-btn" data-value="60k_200k">60,000 – 200,000 جنيه</button>
+              <button class="option-btn" data-value="200k_600k">200,000 – 600,000 جنيه</button>
+              <button class="option-btn" data-value="above_600k">أكثر من 600,000 جنيه</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Loan Purpose — الغرض من القرض</label>
+            <div class="btn-group" id="loanPurposeGroup">
+              <button class="option-btn" data-value="home">شراء / تشطيب عقار</button>
+              <button class="option-btn" data-value="auto">سيارة</button>
+              <button class="option-btn" data-value="education">تعليم</button>
+              <button class="option-btn" data-value="business">مشروع تجاري</button>
+              <button class="option-btn" data-value="personal">شخصي / استهلاكي</button>
+              <button class="option-btn" data-value="medical">علاج طبي</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary full-width large" id="assessBtn" onclick="runAssessment()">
+          RUN AI ASSESSMENT →
+        </button>
+      </div>
+
+      <!-- RESULT PANEL -->
+      <div class="assess-result" id="assessResult" style="display:none;">
+
+        <div class="verdict-header" id="verdictHeader">
+          <div class="verdict-badge" id="verdictBadge">APPROVED</div>
+          <div class="verdict-icon" id="verdictIcon">✓</div>
+          <h2 class="verdict-title" id="verdictTitle">RECOMMENDED FOR APPROVAL</h2>
+          <p class="verdict-sub" id="verdictSub">Based on the applicant's financial profile, our model recommends proceeding with this loan application.</p>
+        </div>
+
+        <div class="result-ring-section">
+          <div class="result-ring">
+            <svg viewBox="0 0 180 180" class="result-ring-svg" id="resultRingSvg">
+              <circle cx="90" cy="90" r="72" fill="none" stroke="#f0ebe3" stroke-width="10"/>
+              <circle cx="90" cy="90" r="72" fill="none" stroke="#FF6B00" stroke-width="10"
+                stroke-dasharray="452" stroke-dashoffset="452"
+                stroke-linecap="round" transform="rotate(-90 90 90)"
+                id="resultRingCircle"/>
+            </svg>
+            <div class="result-ring-inner">
+              <div class="result-ring-score" id="resultScore">—</div>
+              <div class="result-ring-label">Repayment<br/>Probability</div>
+            </div>
+          </div>
+
+          <div class="result-metrics">
+            <div class="result-metric">
+              <span class="metric-label">RISK SEGMENT</span>
+              <span class="metric-val" id="riskSegment">—</span>
+            </div>
+            <div class="result-metric">
+              <span class="metric-label">RISK SCORE</span>
+              <span class="metric-val accent" id="riskScore">—</span>
+            </div>
+            <div class="result-metric">
+              <span class="metric-label">SUGGESTED RATE</span>
+              <span class="metric-val" id="suggestedRate">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-section">
+          <h4>RISK FACTOR BREAKDOWN</h4>
+          <div class="score-bars" id="scoreBars"></div>
+        </div>
+
+        <div class="result-section">
+          <h4>KEY POSITIVE FACTORS — العوامل الإيجابية</h4>
+          <ul class="factor-list factor-positive" id="positiveFactors"></ul>
+        </div>
+
+        <div class="result-section">
+          <h4>RISK FLAGS — مؤشرات المخاطر</h4>
+          <ul class="factor-list factor-negative" id="negativeFactors"></ul>
+        </div>
+
+        <div class="result-section">
+          <h4>CONDITIONS & NEXT STEPS — الشروط والخطوات</h4>
+          <div class="conditions-list" id="conditionsList"></div>
+        </div>
+
+        <div class="result-disclaimer">
+          ⚠️ هذا التقييم أداة دعم قرار فقط. جميع قرارات الإقراض النهائية يجب أن تتوافق مع سياسة الائتمان الرسمية للبنك ولوائح البنك المركزي المصري وتستوجب موافقة مسؤول معتمد.
+        </div>
+
+        <div class="result-actions">
+          <button class="btn-primary" onclick="printResult()">EXPORT REPORT تصدير التقرير</button>
+          <button class="btn-ghost" onclick="resetAssessment()">← NEW ASSESSMENT تقييم جديد</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="Mashreq Bank" class="logo-img logo-img-footer" />
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="loan-assessment.html">Loan Assessment</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mashreq Bank. AI Credit Intelligence Platform — Internal Use Only.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
